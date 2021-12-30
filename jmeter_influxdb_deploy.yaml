@@ -15,12 +15,12 @@ spec:
         app: influxdb-jmeter
     spec:
       containers:
-        - image: influxdb
+        - image: influxdb:1.8
           imagePullPolicy: IfNotPresent
           name: influxdb
           volumeMounts:
-          - name: config-volume
-            mountPath: /etc/influxdb
+            - name: config-volume
+              mountPath: /etc/influxdb
           ports:
             - containerPort: 8083
               name: influx
@@ -29,6 +29,6 @@ spec:
             - containerPort: 2003
               name: graphite
       volumes:
-      - name: config-volume
-        configMap:
-         name: influxdb-config
+        - name: config-volume
+          configMap:
+            name: influxdb-config

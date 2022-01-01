@@ -1,4 +1,4 @@
-FROM kubernautslabs/jmeter-base:latest
-MAINTAINER Kubernauts-lab
+FROM bayern01kahn/jmeter-base:latest
+MAINTAINER bayern01kahn
 		
 EXPOSE 60000

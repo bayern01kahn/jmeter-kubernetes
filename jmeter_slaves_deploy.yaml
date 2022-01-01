@@ -5,7 +5,7 @@ metadata:
   labels:
     jmeter_mode: slave
 spec:
-  replicas: 4
+  replicas: 2
   selector:
     matchLabels:
       jmeter_mode: slave
@@ -16,8 +16,16 @@ spec:
     spec:
       containers:
         - name: jmslave
-          image: kubernautslabs/jmeter_slave:latest
+          image: bayern01kahn/jmeter-slave:latest
           imagePullPolicy: IfNotPresent
+          # imagePullPolicy: Never
           ports:
             - containerPort: 1099
             - containerPort: 50000
+          resources:
+            requests:
+              cpu: 1024m
+              memory: 1Gi
+            limits:
+              cpu: 1024m
+              memory: 1Gi

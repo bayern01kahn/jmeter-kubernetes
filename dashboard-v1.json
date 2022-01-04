@@ -28,8 +28,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 1,
-  "id": 5,
-  "iteration": 1641024645688,
+  "id": 1,
+  "iteration": 1641265200793,
   "links": [
     {
       "asDropdown": true,
@@ -168,7 +168,7 @@
       ],
       "thresholds": "100,500",
       "title": "Active Users",
-      "transparent": false,
+      "transparent": true,
       "type": "singlestat",
       "valueFontSize": "30%",
       "valueMaps": [
@@ -237,7 +237,7 @@
       "sparkline": {
         "fillColor": "rgba(31, 118, 189, 0.18)",
         "full": true,
-        "lineColor": "rgb(31, 120, 193)",
+        "lineColor": "#629e51",
         "show": true
       },
       "tableColumn": "",
@@ -270,15 +270,15 @@
             },
             {
               "condition": "AND",
-              "key": "statut",
-              "operator": "=",
+              "key": "transaction",
+              "operator": "!=",
               "value": "all"
             }
           ]
         }
       ],
-      "thresholds": "5000,10000",
-      "title": "Total Hits",
+      "thresholds": "50000,100000",
+      "title": "Total Success Hits",
       "type": "singlestat",
       "valueFontSize": "50%",
       "valueMaps": [
@@ -291,6 +291,324 @@
       "valueName": "total"
     },
     {
+      "cacheTimeout": null,
+      "colorBackground": false,
+      "colorValue": true,
+      "colors": [
+        "rgba(245, 54, 54, 0.9)",
+        "rgba(237, 129, 40, 0.89)",
+        "rgba(50, 172, 45, 0.97)"
+      ],
+      "datasource": "jmeterdb",
+      "editable": true,
+      "error": false,
+      "format": "none",
+      "gauge": {
+        "maxValue": 100,
+        "minValue": 0,
+        "show": false,
+        "thresholdLabels": false,
+        "thresholdMarkers": true
+      },
+      "gridPos": {
+        "h": 5,
+        "w": 4,
+        "x": 8,
+        "y": 1
+      },
+      "id": 44,
+      "interval": "$granularity",
+      "links": [],
+      "mappingType": 1,
+      "mappingTypes": [
+        {
+          "name": "value to text",
+          "value": 1
+        },
+        {
+          "name": "range to text",
+          "value": 2
+        }
+      ],
+      "maxDataPoints": 100,
+      "nullPointMode": "connected",
+      "nullText": null,
+      "postfix": "",
+      "postfixFontSize": "50%",
+      "prefix": "",
+      "prefixFontSize": "50%",
+      "rangeMaps": [
+        {
+          "from": "null",
+          "text": "N/A",
+          "to": "null"
+        }
+      ],
+      "sparkline": {
+        "fillColor": "rgba(31, 118, 189, 0.18)",
+        "full": true,
+        "lineColor": "#bf1b00",
+        "show": true
+      },
+      "tableColumn": "",
+      "targets": [
+        {
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "transaction"
+              ],
+              "type": "tag"
+            }
+          ],
+          "hide": false,
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "$retention",
+          "query": "SELECT \"hit\" FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND \"statut\" = 'all' AND $timeFilter",
+          "rawQuery": false,
+          "refId": "A",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "countError"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "application",
+              "operator": "=",
+              "value": "s1"
+            },
+            {
+              "condition": "AND",
+              "key": "transaction",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
+        }
+      ],
+      "thresholds": "50000,100000",
+      "title": "Total Errors Hits",
+      "type": "singlestat",
+      "valueFontSize": "50%",
+      "valueMaps": [
+        {
+          "op": "=",
+          "text": "0",
+          "value": "null"
+        }
+      ],
+      "valueName": "total"
+    },
+    {
+      "columns": [],
+      "datasource": "jmeterdb",
+      "fontSize": "100%",
+      "gridPos": {
+        "h": 11,
+        "w": 8,
+        "x": 16,
+        "y": 1
+      },
+      "id": 42,
+      "links": [],
+      "pageSize": null,
+      "scroll": true,
+      "showHeader": true,
+      "sort": {
+        "col": null,
+        "desc": false
+      },
+      "styles": [
+        {
+          "alias": "Time",
+          "dateFormat": "YYYY-MM-DD HH:mm:ss",
+          "pattern": "Time",
+          "type": "hidden"
+        },
+        {
+          "alias": "",
+          "colorMode": null,
+          "colors": [
+            "rgba(245, 54, 54, 0.9)",
+            "rgba(237, 129, 40, 0.89)",
+            "rgba(50, 172, 45, 0.97)"
+          ],
+          "decimals": 2,
+          "pattern": "/.*/",
+          "thresholds": [],
+          "type": "number",
+          "unit": "short"
+        }
+      ],
+      "targets": [
+        {
+          "groupBy": [
+            {
+              "params": [
+                "transaction"
+              ],
+              "type": "tag"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "A",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "rb"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "rb"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "sb"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "sb"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hit"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "hit"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "transaction",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
+        },
+        {
+          "groupBy": [],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "default",
+          "refId": "B",
+          "resultFormat": "table",
+          "select": [
+            [
+              {
+                "params": [
+                  "rb"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "rb"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "sb"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "sb"
+                ],
+                "type": "alias"
+              }
+            ],
+            [
+              {
+                "params": [
+                  "hit"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  "hit"
+                ],
+                "type": "alias"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "transaction",
+              "operator": "!=",
+              "value": "all"
+            }
+          ]
+        }
+      ],
+      "title": "Data Sum",
+      "transform": "table",
+      "type": "table"
+    },
+    {
       "aliasColors": {},
       "bars": true,
       "dashLength": 10,
@@ -301,10 +619,10 @@
       "fill": 1,
       "grid": {},
       "gridPos": {
-        "h": 5,
+        "h": 6,
         "w": 12,
-        "x": 8,
-        "y": 1
+        "x": 4,
+        "y": 6
       },
       "id": 27,
       "interval": "$granularity",
@@ -426,6 +744,19 @@
       }
     },
     {
+      "collapsed": false,
+      "gridPos": {
+        "h": 1,
+        "w": 24,
+        "x": 0,
+        "y": 12
+      },
+      "id": 40,
+      "panels": [],
+      "title": "Errors Metrics",
+      "type": "row"
+    },
+    {
       "cacheTimeout": null,
       "colorBackground": false,
       "colorValue": true,
@@ -437,7 +768,7 @@
       "datasource": "jmeterdb",
       "editable": true,
       "error": false,
-      "format": "percentunit",
+      "format": "percent",
       "gauge": {
         "maxValue": 100,
         "minValue": 0,
@@ -448,8 +779,8 @@
       "gridPos": {
         "h": 6,
         "w": 4,
-        "x": 4,
-        "y": 6
+        "x": 0,
+        "y": 13
       },
       "id": 21,
       "interval": "$granularity",
@@ -532,9 +863,9 @@
           ]
         }
       ],
-      "thresholds": "0.0,0.1",
+      "thresholds": "0.01,0.1",
       "title": "% Errors",
-      "transparent": false,
+      "transparent": true,
       "type": "singlestat",
       "valueFontSize": "100%",
       "valueMaps": [
@@ -561,8 +892,8 @@
       "gridPos": {
         "h": 6,
         "w": 12,
-        "x": 8,
-        "y": 6
+        "x": 4,
+        "y": 13
       },
       "id": 28,
       "interval": "$granularity",
@@ -703,12 +1034,182 @@
       }
     },
     {
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "jmeterdb",
+      "editable": true,
+      "error": false,
+      "fill": 1,
+      "grid": {},
+      "gridPos": {
+        "h": 12,
+        "w": 24,
+        "x": 0,
+        "y": 19
+      },
+      "height": "",
+      "id": 34,
+      "interval": "",
+      "legend": {
+        "alignAsTable": true,
+        "avg": true,
+        "current": true,
+        "hideEmpty": true,
+        "hideZero": true,
+        "max": true,
+        "min": true,
+        "rightSide": false,
+        "show": true,
+        "total": false,
+        "values": true
+      },
+      "lines": true,
+      "linewidth": 1,
+      "links": [],
+      "minSpan": 24,
+      "nullPointMode": "null",
+      "percentage": false,
+      "pointradius": 1,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": true,
+      "targets": [
+        {
+          "alias": "$tag_transaction - $tag_responseCode : $tag_responseMessage",
+          "dsType": "influxdb",
+          "groupBy": [
+            {
+              "params": [
+                "30s"
+              ],
+              "type": "time"
+            },
+            {
+              "params": [
+                "responseMessage"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "responseCode"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "transaction"
+              ],
+              "type": "tag"
+            },
+            {
+              "params": [
+                "null"
+              ],
+              "type": "fill"
+            }
+          ],
+          "measurement": "jmeter",
+          "orderByTime": "ASC",
+          "policy": "$retention",
+          "query": "SELECT sum(\"count\")  / 5 FROM \"jmeter\" WHERE \"application\" =~ /$app$/ AND \"statut\" = 'ko' AND $timeFilter GROUP BY time($granularity), \"responseCode\" fill(null)",
+          "rawQuery": false,
+          "refId": "B",
+          "resultFormat": "time_series",
+          "select": [
+            [
+              {
+                "params": [
+                  "count"
+                ],
+                "type": "field"
+              },
+              {
+                "params": [],
+                "type": "sum"
+              },
+              {
+                "params": [
+                  " / 30"
+                ],
+                "type": "math"
+              }
+            ]
+          ],
+          "tags": [
+            {
+              "key": "application",
+              "operator": "=~",
+              "value": "/$app$/"
+            },
+            {
+              "condition": "AND",
+              "key": "responseCode",
+              "operator": "!~",
+              "value": "/^0$|^$/"
+            },
+            {
+              "condition": "AND",
+              "key": "transaction",
+              "operator": "=~",
+              "value": "/$transaction/"
+            }
+          ]
+        }
+      ],
+      "thresholds": [],
+      "timeFrom": null,
+      "timeShift": null,
+      "title": "Error detail",
+      "tooltip": {
+        "msResolution": false,
+        "shared": true,
+        "sort": 0,
+        "value_type": "cumulative"
+      },
+      "transparent": false,
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "none",
+          "label": "",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "collapsed": false,
       "gridPos": {
         "h": 1,
         "w": 24,
         "x": 0,
-        "y": 12
+        "y": 31
       },
       "id": 36,
       "panels": [],
@@ -730,7 +1231,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 13
+        "y": 32
       },
       "height": "",
       "id": 25,
@@ -869,7 +1370,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 31
+        "y": 50
       },
       "height": "",
       "id": 26,
@@ -1021,7 +1522,7 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 49
+        "y": 68
       },
       "height": "",
       "id": 29,
@@ -1171,10 +1672,10 @@
         "h": 18,
         "w": 24,
         "x": 0,
-        "y": 67
+        "y": 86
       },
       "height": "",
-      "id": 34,
+      "id": 43,
       "interval": "",
       "legend": {
         "alignAsTable": true,
@@ -1460,7 +1961,6 @@
       },
       {
         "current": {
-          "selected": true,
           "text": "default",
           "value": "default"
         },
@@ -1476,9 +1976,9 @@
       {
         "allValue": null,
         "current": {
-          "selected": true,
-          "text": "Upgrade-Insecure-Requests:",
-          "value": "Upgrade-Insecure-Requests:"
+          "isNone": true,
+          "text": "None",
+          "value": ""
         },
         "datasource": "jmeterdb",
         "hide": 0,
@@ -1589,5 +2089,5 @@
   "timezone": "browser",
   "title": "JMeter Metric Template",
   "uid": "ltaas",
-  "version": 7
+  "version": 1
 }

@@ -21,7 +21,7 @@
   "gnetId": 5496,
   "graphTooltip": 0,
   "id": 2,
-  "iteration": 1641352301713,
+  "iteration": 1641370190920,
   "links": [],
   "panels": [
     {
@@ -594,7 +594,7 @@
           "tags": []
         }
       ],
-      "thresholds": "0,0.01",
+      "thresholds": "0.001,0.01",
       "title": "Error Rate %",
       "type": "singlestat",
       "valueFontSize": "50%",
@@ -1576,9 +1576,9 @@
       "colorBackground": false,
       "colorValue": true,
       "colors": [
-        "rgba(245, 54, 54, 0.9)",
+        "rgba(50, 172, 45, 0.97)",
         "#e5ac0e",
-        "rgba(50, 172, 45, 0.97)"
+        "rgba(245, 54, 54, 0.9)"
       ],
       "datasource": "$data_source",
       "decimals": 0,
@@ -1686,7 +1686,7 @@
           ]
         }
       ],
-      "thresholds": "",
+      "thresholds": "10000000",
       "title": "Total Requests - $transaction",
       "type": "singlestat",
       "valueFontSize": "80%",
@@ -1964,7 +1964,7 @@
         "Max": "#58140C",
         "Req / s": "#6ed0e0"
       },
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$data_source",
@@ -1992,7 +1992,7 @@
         "total": false,
         "values": true
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -2238,7 +2238,7 @@
         "Median": "#6ed0e0",
         "median": "#6ed0e0"
       },
-      "bars": false,
+      "bars": true,
       "dashLength": 10,
       "dashes": false,
       "datasource": "$data_source",
@@ -2268,7 +2268,7 @@
         "total": false,
         "values": true
       },
-      "lines": true,
+      "lines": false,
       "linewidth": 1,
       "links": [],
       "nullPointMode": "null",
@@ -2790,5 +2790,5 @@
   "timezone": "browser",
   "title": "s1-perf-v1",
   "uid": "qu5PwE0nk",
-  "version": 3
+  "version": 6
 }

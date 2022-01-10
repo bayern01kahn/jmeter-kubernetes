@@ -1345,6 +1345,13 @@
             <stringProp name="1722">60</stringProp>
             <stringProp name="48">0</stringProp>
           </collectionProp>
+          <collectionProp name="1616293885">
+            <stringProp name="1691">50</stringProp>
+            <stringProp name="49710">240</stringProp>
+            <stringProp name="48">0</stringProp>
+            <stringProp name="60">60</stringProp>
+            <stringProp name="48">0</stringProp>
+          </collectionProp>
         </collectionProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller" enabled="true">
           <boolProp name="LoopController.continue_forever">false</boolProp>

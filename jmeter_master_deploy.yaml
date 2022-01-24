@@ -16,8 +16,9 @@ spec:
     spec:
       containers:
         - name: jmmaster
-          image: bayern01kahn/jmeter-master:latest
-          imagePullPolicy: IfNotPresent
+          image: bayern01kahn/jmeter-master:0.1
+          imagePullPolicy: Always
+          # imagePullPolicy: IfNotPresent
           # imagePullPolicy: Never
           command: ["/bin/bash", "-c", "--"]
           args: ["while true; do sleep 30; done;"]
@@ -27,13 +28,13 @@ spec:
               subPath: "load_test"
           ports:
             - containerPort: 60000
-          resources:
-            requests:
-              cpu: 100m
-              memory: 1Gi
-            limits:
-              cpu: 1000m
-              memory: 1Gi
+          # resources:
+          #   requests:
+          #     cpu: 100m
+          #     memory: 1Gi
+          #   limits:
+          #     cpu: 1000m
+          #     memory: 1Gi
       volumes:
         - name: loadtest
           configMap:

@@ -9,4 +9,5 @@ data:
     #!/bin/bash
     #Script created to invoke jmeter test script with the slave POD IP addresses
     #Script should be run like: ./load_test "path to the test script in jmx format"
-    JVM_ARGS="-XX:+PrintGCDetails -Xmx1024M -Xms1024M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC -XX:PermSize=32M" /jmeter/apache-jmeter-*/bin/jmeter -n -t $1 -Dserver.rmi.ssl.disable=true -R `getent ahostsv4 jmeter-slaves-svc | cut -d' ' -f1 | sort -u | awk -v ORS=, '{print $1}' | sed 's/,$//'`
+    #JVM parameter may need later: -XX:+PrintGCDetails 
+    JVM_ARGS="-Xmx1024M -Xms1024M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC" /jmeter/apache-jmeter-*/bin/jmeter -n -t $1 -Dserver.rmi.ssl.disable=true -R `getent ahostsv4 jmeter-slaves-svc | cut -d' ' -f1 | sort -u | awk -v ORS=, '{print $1}' | sed 's/,$//'`

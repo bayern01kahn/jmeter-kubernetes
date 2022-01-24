@@ -1,0 +1,4 @@
+FROM bayern01kahn/jmeter-base:0.1
+MAINTAINER justin.luo
+		
+EXPOSE 60000

@@ -24,9 +24,15 @@ test_name="$(basename "$jmx")"
 
 master_pod=`kubectl get po -n $tenant | grep jmeter-master | awk '{print $1}'`
 
-kubectl cp "$jmx" -n $tenant -c jmmaster "$master_pod:/$test_name"
-# kubectl cp s1.jmx -n perf -c jmmaster "jmeter-master-7d5b655c7f-wpvxd:/s1.jmx"
+echo "kcp starting"
+echo "jmx=$jmx"
+echo "test_name=$test_name"
+echo "copy to $master_pod:/$test_name"
+
+kubectl cp $jmx -n $tenant $master_pod:/$test_name -c jmmaster 
+
+echo "kcp done"
 ## Echo Starting Jmeter load test
 
 kubectl exec -ti -n $tenant $master_pod -c jmmaster -- /bin/bash /load_test "$test_name"
-# kubectl exec -ti -n pref jmeter-master-7d5b655c7f-wpvxd -c jmmaster -- /bin/bash /load_test s1.jmx
+# kubectl exec -ti -n perf jmeter-master-7d5b655c7f-wpvxd -c jmmaster -- /bin/bash /load_test s

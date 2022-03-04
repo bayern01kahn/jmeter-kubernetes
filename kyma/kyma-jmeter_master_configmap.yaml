@@ -1,0 +1,13 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: jmeter-load-test
+  labels:
+    app: influxdb-jmeter
+data:
+  load_test: |
+    #!/bin/bash
+    #Script created to invoke jmeter test script with the slave POD IP addresses
+    #Script should be run like: ./load_test "path to the test script in jmx format"
+    #JVM parameter may need later: -XX:+PrintGCDetails -Xmx1024M  -L ERROR
+    JVM_ARGS="-Xms1024M -XX:+HeapDumpOnOutOfMemoryError -XX:+UseG1GC" /jmeter/apache-jmeter-*/bin/jmeter -n -t $1 -j slave_debug.log -L INFO -Dserver.rmi.ssl.disable=true -R `getent ahostsv4 jmeter-slaves-svc | cut -d' ' -f1 | sort -u | awk -v ORS=, '{print $1}' | sed 's/,$//'`

@@ -11,14 +11,16 @@ spec:
       jmeter_mode: master
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
       labels:
         jmeter_mode: master
     spec:
       containers:
         - name: jmmaster
-          image: bayern01kahn/jmeter-master:latest
-          imagePullPolicy: Always
-          # imagePullPolicy: IfNotPresent
+          image: docker-registry.c-43f6b45.kyma.ondemand.com/jmeter-master-kyma:0.1
+          # imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           # imagePullPolicy: Never
           command: ["/bin/bash", "-c", "--"]
           args: ["while true; do sleep 30; done;"]
@@ -35,6 +37,7 @@ spec:
           #   limits:
           #     cpu: 1000m
           #     memory: 1Gi
+      nodeName: ip-10-250-22-145.eu-central-1.compute.internal
       volumes:
         - name: loadtest
           configMap:

@@ -11,14 +11,16 @@ spec:
       jmeter_mode: slave
   template:
     metadata:
+      annotations:
+        sidecar.istio.io/inject: "false"
       labels:
         jmeter_mode: slave
     spec:
       containers:
         - name: jmslave
-          image: bayern01kahn/jmeter-slave:latest
-          imagePullPolicy: Always
-          # imagePullPolicy: IfNotPresent
+          image: docker-registry.c-43f6b45.kyma.ondemand.com/jmeter-slave-kyma:0.1
+          # imagePullPolicy: Always
+          imagePullPolicy: IfNotPresent
           # imagePullPolicy: Never
           ports:
             - containerPort: 1099

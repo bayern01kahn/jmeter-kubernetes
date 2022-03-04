@@ -69,15 +69,15 @@ echo
 
 echo
 
-kubectl create -n $tenant -f $working_dir/jmeter_slaves_deploy.yaml
+kubectl create -n $tenant -f $working_dir/kyma-jmeter_slaves_deploy.yaml
 
 kubectl create -n $tenant -f $working_dir/jmeter_slaves_svc.yaml
 
 echo "Creating Jmeter Master"
 
-kubectl create -n $tenant -f $working_dir/jmeter_master_configmap.yaml
+kubectl create -n $tenant -f $working_dir/kyma-jmeter_master_configmap.yaml
 
-kubectl create -n $tenant -f $working_dir/jmeter_master_deploy.yaml
+kubectl create -n $tenant -f $working_dir/kyma-jmeter_master_deploy.yaml
 
 
 echo "Creating Influxdb and the service"

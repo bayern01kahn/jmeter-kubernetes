@@ -90,7 +90,7 @@
           </elementProp>
           <elementProp name="" elementType="Header">
             <stringProp name="Header.name">Authorization</stringProp>
-            <stringProp name="Header.value">Bearer eyJraWQiOiJiMmlpMThQbnJ5RjVLaWs4ajRoV3U3TVJTb00iLCJhbGciOiJSUzI1NiJ9.eyJzdWIiOiJBRE1JTjAxIiwiYXVkIjpbImQyZjAyMGZhLTJiZTQtNDExNC1iY2EyLTQ4NmRjMDFiZTZmMCIsIjQ0MWQwYjQyLWFmNTMtNGQ0Yi1iYTQ0LWMwM2Y0ZTMxNTFjOSJdLCJ1c2VyX3V1aWQiOiIxZTc4YWI4Yy1lMmM5LTQyNDAtYmRhMy05M2M0ZWEwZDIzZjMiLCJhenAiOiI0NDFkMGI0Mi1hZjUzLTRkNGItYmE0NC1jMDNmNGUzMTUxYzkiLCJpc3MiOiJodHRwczpcL1wvc3BvcnRzb25ldGVzdC5hY2NvdW50cy5vbmRlbWFuZC5jb20iLCJ6b25lX3V1aWQiOiJjODg3NjdiMy0xZDVhLTRhM2UtYTA3OC05OWEwNGYxNjYxYTgiLCJleHAiOjE2NDE4ODY0MTQsImdpdmVuX25hbWUiOiJQZXRlciIsImlhdCI6MTY0MTg4MjgxNCwiZmFtaWx5X25hbWUiOiJBZG1pbiIsImp0aSI6ImNlNWI4Y2ViLWJkZWMtNDA0NS05YTZiLThmMDBjNmJjZDJhMiIsImVtYWlsIjoic3BvcnRzb25lLnRlc3QrYWRtaW5Ac2FwLmNvbSJ9.eXxjtYxnoS6dF7rxHeuFANqlOIfuctLudw2waUh1GCzAcJbhTJwgA3P84gvwkM2Dth4DS_jLXhqvlRt-iCduIE6uYhVvoSw3qUNrnnN3UYKDxrbRpa1wEAT7eih8BlnrM9G8R9radCojeuKigvonZon263VyIm9y3uyZfmjG0EnZTqWxU4P2VEz-_e5b8ssirELeIEixyiUwaYJ-xuLOFasTWt08-RDO618xVV9wCsBbne6UuM9oiWQZY_ifmgCLr_R1bKW5n1sZ7cyWXh4Wwfc307fn9MUCjUx3bCR8vN_qisz2rVs9klJdSCe5GEBvoK9yb-fj9QNmClg8yBtlsQ</stringProp>
+            <stringProp name="Header.value">Bearer xxxxx</stringProp>
           </elementProp>
         </collectionProp>
       </HeaderManager>
